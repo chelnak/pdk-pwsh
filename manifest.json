@@ -1,0 +1,543 @@
+{
+  "$schema": "https://aka.ms/PowerShell/Crescendo/Schemas/2022-06",
+  "Commands": [
+    {
+        "Verb": "Get",
+        "Noun": "PDKVersion",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+            "--version"
+        ],
+        "Description": "Get the version of PDK."
+    },
+    {
+      "Verb": "New",
+      "Noun": "PDKModule",
+      "OriginalName": "pdk",
+      "OriginalCommandElements": [
+         "new",
+         "module"
+      ],
+      "Description": "Create a new Puppet module with PDK.",
+      "OutputHandlers": [
+        {
+            "ParameterSetName": "Default",
+            "HandlerType": "Inline",
+            "Handler": "$args[0] | ConvertFrom-Json"
+        }
+      ],
+      "SupportsShouldProcess": true,
+      "SupportsTransactions": false,
+      "NoInvocation": false,
+      "Parameters": [
+        {
+          "OriginalName": "name",
+          "Name": "Name",
+          "ParameterType": "String",
+          "Position": 0,
+          "Mandatory": true,
+          "Description": "The name of the module to create.",
+          "ParameterSets": [
+            "Default"
+          ],
+          "ParameterSet": "Default"
+        },
+        {
+            "OriginalName": "license",
+            "Name": "License",
+            "ParameterType": "String",
+            "Position": 1,
+            "Mandatory": false,
+            "Description": "Specifies the license this module is written under. This should be a identifier from https://spdx.org/licenses/. Common values are 'Apache-2.0', 'MIT', or 'proprietary'.",
+            "ParameterSets": [
+              "Default"
+            ]
+        },
+        {
+            "OriginalName": "template-ref",
+            "Name": "TemplateRef",
+            "ParameterType": "String",
+            "Position": 2,
+            "Mandatory": false,
+            "Description": "Specifies the template git branch or tag to use when creating new modules or classes.",
+            "ParameterSets": [
+              "Default"
+            ]
+        },
+        {
+            "OriginalName": "template-url",
+            "Name": "TemplateURL",
+            "ParameterType": "String",
+            "Position": 3,
+            "Mandatory": false,
+            "Description": "Specifies the URL to the template to use when creating new modules or classes. (default: pdk-default#main)"
+        },
+        {
+            "OriginalName": "full-interview",
+            "Name": "FullInterview",
+            "ParameterType": "Switch",
+            "Mandatory": false,
+            "Description": "When specified, interactive querying of metadata will include all optional questions."
+        },
+        {
+            "OriginalName": "skip-interview",
+            "Name": "SkipInterview",
+            "ParameterType": "Switch",
+            "Mandatory": false,
+            "Description": "When specified, skips interactive querying of metadata."
+        },
+        {
+            "OriginalName": "format",
+            "Name": "Format",
+            "ParameterType": "String",
+            "Mandatory": false,
+            "Description": "Specify desired output format. Valid formats are 'junit', 'text'. You may also specify a file to which the formatted output is sent, for example: '--format=junit:report.xml'. This option may be specified multiple times if each option specifies a distinct target file."
+        }
+      ],
+      "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKClass",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "class"
+        ],
+        "Description": "Create a new class named <class_name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the class to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKDefinedType",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "defined_type"
+        ],
+        "Description": "Create a new defined type named <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the defined type to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKFact",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "fact"
+        ],
+        "Description": "Create a new defined type fact <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the fact to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKFunction",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "function"
+        ],
+        "Description": "Create a new function named <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the function to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "type",
+            "Name": "Type",
+            "ParameterType": "String",
+            "Position": 1,
+            "Mandatory": false,
+            "Description": "The function type, (native or v4) (default: native)",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKProvider",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "provider"
+        ],
+        "Description": "Create a new provider named <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the provider to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKTask",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "task"
+        ],
+        "Description": "Create a new task named <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the task to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKTest",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "test"
+        ],
+        "Description": "Create a new test <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the test to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "puppet-version",
+            "Name": "PuppetVersion",
+            "ParameterType": "String",
+            "Position": 1,
+            "Mandatory": false,
+            "Description": "Puppet Enterprise version to run tests or validations against.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "puppet-dev",
+            "Name": "PuppetDev",
+            "ParameterType": "Switch",
+            "Position": 2,
+            "Mandatory": false,
+            "Description": "When specified, PDK will validate or test against the current Puppet source from github.com. To use this option, you must have network access to https://github.com.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "unit",
+            "Name": "Unit",
+            "ParameterType": "Switch",
+            "Position": 3,
+            "Mandatory": false,
+            "Description": "Create a new unit test.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "New",
+        "Noun": "PDKTransport",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "new",
+           "transport"
+        ],
+        "Description": "Create a new transport named <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String",
+            "Position": 0,
+            "Mandatory": true,
+            "Description": "The name of the transport to create.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "Get",
+        "Noun": "PDKTest",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "test",
+           "unit",
+           "--list"
+        ],
+        "Description": "List all available unit test files.",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": false,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+            {
+                "OriginalName": "verbose",
+                "Name": "More",
+                "ParameterType": "Switch",
+                "Position": 0,
+                "Mandatory": false,
+                "Description": "More verbose --list output. Displays a list of examples in each unit test file."
+            }
+        ],
+        "Examples": []
+    },
+    {
+        "Verb": "Invoke",
+        "Noun": "PDKTest",
+        "OriginalName": "pdk",
+        "OriginalCommandElements": [
+           "test",
+           "unit"
+        ],
+        "Description": "Create a new transport named <name> using given options",
+        "OutputHandlers": [
+          {
+              "ParameterSetName": "Default",
+              "HandlerType": "Inline",
+              "Handler": "$args[0] | ConvertFrom-Json"
+          }
+        ],
+        "SupportsShouldProcess": true,
+        "SupportsTransactions": false,
+        "NoInvocation": false,
+        "Parameters": [
+          {
+            "OriginalName": "name",
+            "Name": "Name",
+            "ParameterType": "String[]",
+            "Position": 0,
+            "Mandatory": false,
+            "Description": "Specify a comma-separated list of unit test files to run. (default: ).",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "parallel",
+            "Name": "Parallel",
+            "ParameterType": "Switch",
+            "Position": 0,
+            "Mandatory": false,
+            "Description": "Run unit tests in parallel.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "clean-fixtures",
+            "Name": "CleanFixtures",
+            "ParameterType": "Switch",
+            "Position": 0,
+            "Mandatory": false,
+            "Description": "Clean up downloaded fixtures after the test run.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },     
+          {
+            "OriginalName": "puppet-version",
+            "Name": "PuppetVersion",
+            "ParameterType": "String",
+            "Position": 1,
+            "Mandatory": false,
+            "Description": "Puppet Enterprise version to run tests or validations against.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+          {
+            "OriginalName": "puppet-dev",
+            "Name": "PuppetDev",
+            "ParameterType": "Switch",
+            "Position": 2,
+            "Mandatory": false,
+            "Description": "When specified, PDK will validate or test against the current Puppet source from github.com. To use this option, you must have network access to https://github.com.",
+            "ParameterSets": [
+              "Default"
+            ],
+            "ParameterSet": "Default"
+          },
+        ],
+        "Examples": []
+    },
+  ]
+}
